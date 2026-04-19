@@ -3,13 +3,29 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export const Navbar = () => {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [mobileMenuOpen]);
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -24,7 +40,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed left-1/2 top-4 z-50 w-[min(600px,calc(100%-1.5rem))] -translate-x-1/2">
+    <nav ref={navRef} className="fixed left-1/2 top-4 z-50 w-[min(600px,calc(100%-1.5rem))] -translate-x-1/2">
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#111115]/92 px-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:px-4">
         <GlowingEffect
           blur={0}

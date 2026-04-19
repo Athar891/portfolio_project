@@ -128,7 +128,15 @@ export const WebcamPixelGrid: React.FC<WebcamPixelGridProps> = ({
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        await videoRef.current.play();
+        try {
+          await videoRef.current.play();
+        } catch (playError) {
+          // Ignore AbortError from play() - happens when stream changes rapidly
+          if (playError instanceof DOMException && playError.name === 'AbortError') {
+            return;
+          }
+          throw playError;
+        }
         setIsReady(true);
         setError(null);
         setShowErrorPopup(false);

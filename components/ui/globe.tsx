@@ -5,6 +5,19 @@ import ThreeGlobe from "three-globe";
 import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+
+// Suppress THREE.Clock deprecation warning from three-globe
+const originalWarn = console.warn;
+console.warn = (...args: any[]) => {
+  if (
+    args[0]?.includes?.("Clock") ||
+    args[0]?.message?.includes?.("Clock")
+  ) {
+    return;
+  }
+  originalWarn.apply(console, args);
+};
+
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: ThreeElements["mesh"] & {

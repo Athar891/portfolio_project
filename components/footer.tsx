@@ -5,10 +5,9 @@ import Image from "next/image";
 
 export const Footer = () => {
   const footerLinks = [
-    { label: "Products", href: "#products" },
-    { label: "Studio", href: "#studio" },
-    { label: "Clients", href: "#clients" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Contact", href: "/contact" },
     { label: "Blog", href: "/blog" },
     { label: "Privacy", href: "#privacy" },
     { label: "Terms", href: "#terms" },

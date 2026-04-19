@@ -7,3 +7,16 @@ build
 .vercel
 .DS_Store
 *.pem
+
+# Environment variables (NEVER commit these!)
+.env.local
+.env.*.local
+
+# Email testing logs
+*.log
+
+# Documentation files
+CONTACT_FORM_SETUP.md
+IMPLEMENTATION_CHECKLIST.md
+QUICK_REFERENCE.md
+SECURE_BACKEND_SUMMARY.md
