@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  php:
+    image: php:8.2-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    working_dir: /var/www/html
+    command: >
+      sh -c "docker-php-ext-install pdo pdo_mysql &&
+             a2enmod rewrite &&
+             apache2-foreground"
