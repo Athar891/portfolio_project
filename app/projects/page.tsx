@@ -11,7 +11,7 @@ const projects = [
     tags: ["SwiftUI", "Firebase"],
     href: "https://github.com/Athar891/AgrisenseiOS.git",
     gradient: "from-violet-500 via-purple-500 to-blue-500",
-    image: "/agrisense.png",
+    image: "/Agrisense.png",
   },
   {
     id: 2,
