@@ -20,7 +20,6 @@ export default function About() {
                   width={128}
                   height={128}
                   className="rounded-lg"
-                  style={{ width: "auto", height: "auto" }}
                 />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">Athar</h3>

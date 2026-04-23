@@ -9,8 +9,8 @@ export const Footer = () => {
     { label: "Projects", href: "/projects" },
     { label: "Contact", href: "/contact" },
     { label: "Blog", href: "/blog" },
-    { label: "Privacy", href: "#privacy" },
-    { label: "Terms", href: "#terms" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
   ];
 
   const socialLinks = [
